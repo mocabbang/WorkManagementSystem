@@ -1,12 +1,11 @@
 
 import java.util.Scanner;
 
-public class MenuManager 
-{
+public class MenuManager {
 	
 	
-	public static void main(String[] args) 
-	{
+	public static void main(String[] args) {
+		
 		Scanner input=new Scanner(System.in);
 		
 		int select=0;
@@ -15,9 +14,8 @@ public class MenuManager
 		int year=0,month=0,date=0;
 		String name="", namesearcher="";
 		
-		while(select!=6)
-		{
-
+		while(select!=6) {
+			
 			System.out.println("1. Add Work");
 			System.out.println("2. Delete Work");
 			System.out.println("3. Edit Work");
@@ -30,8 +28,8 @@ public class MenuManager
 			select=input.nextInt();
 			
 
-			switch (select)
-			{
+			switch (select) {
+			
 			case 1:
 				System.out.println("state the name of job to do");
 				name=input.next();
