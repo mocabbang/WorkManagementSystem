@@ -13,7 +13,7 @@ public class MenuManager
 		int i=0,j=0,k=0;
 		
 		int year=0,month=0,date=0;
-		String name="";
+		String name="", namesearcher="";
 		
 		while(select!=6)
 		{
@@ -44,15 +44,18 @@ public class MenuManager
 				break;
 				
 			case 2:
+				name="";
+				year=0;
+				month=0;
+				date=0;
+				System.out.println("clear");
 				break;
 				
 			case 3:
+				//array
 				break;
 				
 			case 4:
-				
-				//System.out.println("");   array
-				
 				System.out.printf("name of work : %s", name);
 				System.out.printf("year : %d   month : %d   date : %d", year, month, date);
 				break;
