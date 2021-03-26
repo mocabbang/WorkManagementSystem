@@ -9,10 +9,9 @@ public class MenuManager {
 		Scanner input=new Scanner(System.in);
 		
 		int select=0;
-		int i=0,j=0,k=0;
 		
 		int year=0,month=0,date=0;
-		String name="", namesearcher="";
+		String name="";
 		
 		while(select!=6) {
 			
@@ -31,31 +30,19 @@ public class MenuManager {
 			switch (select) {
 			
 			case 1:
-				System.out.println("state the name of job to do");
-				name=input.next();
-				System.out.println("state the year of work");
-				year=input.nextInt();
-				System.out.println("state the month of work");
-				month=input.nextInt();
-				System.out.println("state the date of work");
-				date=input.nextInt();
+				addwork();
 				break;
 				
 			case 2:
-				name="";
-				year=0;
-				month=0;
-				date=0;
-				System.out.println("clear");
+				deletework();
 				break;
 				
 			case 3:
-				//array
+				editwork();
 				break;
 				
 			case 4:
-				System.out.printf("name of work : %s", name);
-				System.out.printf("year : %d   month : %d   date : %d", year, month, date);
+				viewwork();
 				break;
 				
 			case 5:
@@ -71,8 +58,105 @@ public class MenuManager {
 			
 			
 		}
+		
+		
+		
+		
 
 		System.out.print("\n close program \n");
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void addwork() {
+		
+		Scanner input=new Scanner(System.in);
+		
+		int year=0;
+		int month=0;
+		int date=0;
+		int hour=0;
+		int minute=0;
+		String name="";
+		
+		
+		System.out.println("state the name of job to do");
+		name=input.next();
+		System.out.print("year : ");
+		year=input.nextInt();
+		System.out.print("month : ");
+		month=input.nextInt();
+		System.out.print("date : ");
+		date=input.nextInt();
+		System.out.print("hour : ");
+		hour=input.nextInt();
+		System.out.print("minute : ");
+		minute=input.nextInt();
+		
+		System.out.println(" Successfully done");
+		
+	}
+	
+	
+	
+	
+	public static void deletework() {
+		
+		Scanner input=new Scanner(System.in);
+		
+		int year=0;
+		int month=0;
+		int date=0;
+		int hour=0;
+		int minute=0;
+		String name="";
+		
+		
+		System.out.println("state the name of job to do");
+		name=input.next();
+		
+	}
+	
+	
+	
+	public static void editwork() {
+		
+		Scanner input=new Scanner(System.in);
+		
+		int year=0;
+		int month=0;
+		int date=0;
+		int hour=0;
+		int minute=0;
+		String name="";
+		
+		
+		System.out.println("state the name of job to do");
+		name=input.next();
+		
+	}
+	
+	
+	
+	public static void viewwork() {
+		
+		Scanner input=new Scanner(System.in);
+		
+		int year=0;
+		int month=0;
+		int date=0;
+		int hour=0;
+		int minute=0;
+		String name="";
+		
+		
+		System.out.println("state the name of job to do");
+		name=input.next();
+		
 	}
 	
 }
