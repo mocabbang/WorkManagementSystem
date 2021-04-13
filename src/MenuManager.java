@@ -5,8 +5,8 @@ public class MenuManager {
 	
 	public static void main(String[] args) {
 		
-		WorkManager workmanager=new WorkManager();
 		Scanner input=new Scanner(System.in);
+		WorkManager workmanager=new WorkManager(input);
 		
 		int select=0;
 		
@@ -20,7 +20,7 @@ public class MenuManager {
 			System.out.println("5. Exit");
 			
 			
-			System.out.print("input number between 1~5 : ");
+			System.out.print("input number between 1~6 : ");
 			select=input.nextInt();
 			
 			
@@ -39,11 +39,14 @@ public class MenuManager {
 				break;
 				
 			case 4:
-				workmanager.viewwork();
+				workmanager.viewworks();
 				break;
 				
 			case 5:
 				select=5;
+				break;
+				
+			case 6:
 				break;
 				
 			default:
