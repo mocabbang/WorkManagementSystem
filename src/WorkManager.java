@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import work.SpecialWork;
+import work.Work;
+
 
 public class WorkManager {
 	
@@ -14,14 +17,31 @@ public class WorkManager {
 	
 	
 	public void addwork() {
-		work=new Work();
-		System.out.print("name of work : ");
-		work.name=input.next();
-		System.out.print("date of work : ");
-		work.date=input.next();
-		System.out.println("Description");
-		work.description=input.next();
-		works.add(work);
+		int kind=0;
+		while(kind!=1 && kind!=2) {
+			
+			System.out.println("1 for typical, 2 for special");
+			System.out.print("select the num : ");
+			kind=input.nextInt();
+			
+			if(kind==1) {
+				work=new Work();
+				work.getWorkInput(input);
+				works.add(work);
+				break;
+			}
+			else if(kind==2) {
+				work=new SpecialWork();
+				work.getWorkInput(input);
+				works.add(work);
+				break;
+			}
+			else {
+				System.out.println("wrong access");
+			}
+			
+		}
+		
 		
 		System.out.println(" Successfully done");
 		
@@ -38,7 +58,7 @@ public class WorkManager {
 		
 		while(i<works.size()) {
 			
-			if(works.get(i).name==name) {
+			if(works.get(i).getName()==name) {
 				index=i;
 				break;
 			}
@@ -62,11 +82,11 @@ public class WorkManager {
 		int i=0;
 		
 		System.out.println("state the name of job to do");
-		String name=input.next();
+		String Name=input.next();
 		
 		while(i<works.size()) {
 			
-			if(works.get(i).name==name) {
+			if(works.get(i).getName()==Name) {
 				
 				int select=-1;
 				while(select!=4) {
@@ -80,15 +100,18 @@ public class WorkManager {
 					
 					if(select==1) {
 						System.out.print("new name : ");
-						works.get(i).name=input.next();
+						String name=input.next();
+						works.get(i).setName(name);
 					}
 					else if(select==2) {
 						System.out.print("date of work : ");
-						works.get(i).date=input.next();
+						String date=input.next();
+						works.get(i).setDate(date);
 					}
 					else if(select==3) {
 						System.out.println("Description");
-						works.get(i).description=input.next();
+						String description=input.next();
+						works.get(i).setDescription(description);
 					}
 					else {
 						continue;
@@ -112,9 +135,9 @@ public class WorkManager {
 		// String name=input.next();
 		
 		while(i<works.size()) {
-			System.out.printf("name of work : %s\n", works.get(i).name);
-			System.out.printf("date of work : %s\n", works.get(i).date);
-			System.out.printf("work description \n%s\n", works.get(i).description);
+			System.out.printf("name of work : %s\n", works.get(i).getName());
+			System.out.printf("date of work : %s\n", works.get(i).getDate());
+			System.out.printf("work description \n%s\n", works.get(i).getDescription());
 			
 			i++;
 		}
