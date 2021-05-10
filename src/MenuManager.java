@@ -11,7 +11,7 @@ public class MenuManager {
 		int select=0;
 		
 		
-		while(select!=6) {
+		while(select!=5) {
 			
 			System.out.println("1. Add Work");
 			System.out.println("2. Delete Work");
@@ -20,7 +20,7 @@ public class MenuManager {
 			System.out.println("5. Exit");
 			
 			
-			System.out.print("input number between 1~6 : ");
+			System.out.print("input number between 1~5 : ");
 			select=input.nextInt();
 			
 			

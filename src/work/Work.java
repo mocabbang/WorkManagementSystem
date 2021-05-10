@@ -1,23 +1,13 @@
 package work;
 
-import java.util.Scanner;
-
-public class Work {
+public abstract class Work {
 	
-	protected int importance;
 	protected WorkKind kind=WorkKind.Typical;
 	protected String description;
 	protected String date="";
 	protected String name="";
 	
-
-	public int getImportance() {
-		return importance;
-	}
-
-	public void setImportance(int importance) {
-		this.importance = importance;
-	}
+	
 	
 	public Work() {
 	}
@@ -27,7 +17,8 @@ public class Work {
 		this.date=date;
 	}
 
-	public Work(String name, String date, String description) {
+	public Work(WorkKind kind, String name, String date, String description) {
+		this.kind=kind;
 		this.name=name;
 		this.date=date;
 		this.description=description;
@@ -65,24 +56,6 @@ public class Work {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	
-	
-	public void getWorkInput(Scanner input) {
-		
-		System.out.print("name of work : ");
-		String name=input.next();
-		this.setName(name);
-		
-		System.out.print("date of work : ");
-		String date=input.next();
-		this.setDate(date);
-		
-		System.out.println("Description");
-		String description=input.next();
-		this.setDescription(description);
-		
 	}
 	
 }

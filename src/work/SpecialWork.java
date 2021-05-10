@@ -2,10 +2,38 @@ package work;
 
 import java.util.Scanner;
 
-public class SpecialWork extends Work {
+public class SpecialWork extends Work implements WorkInput {
+	
+	protected int importance;
+	
+	
+	
+	public SpecialWork() {
+	}
+	
+	public SpecialWork(WorkKind kind, int importance, String name, String date, String description) {
+		this.kind=kind;
+		this.importance=importance;
+		this.name=name;
+		this.date=date;
+		this.description=description;
+	}
+	
+	
+	
+	public int getImportance() {
+		return importance;
+	}
+
+	public void setImportance(int importance) {
+		this.importance = importance;
+	}
+	
 	
 	
 	public void getWorkInput(Scanner input) {
+		
+		this.kind=WorkKind.Special;
 		
 		System.out.print("name of work : ");
 		String name=input.next();
@@ -41,5 +69,14 @@ public class SpecialWork extends Work {
 		
 	}
 	
+	public void printInfo() {
+		
+		System.out.println("workkind : "+kind);
+		System.out.println("importance : "+importance);
+		System.out.println("name : "+name);
+		System.out.println("date : "+date);
+		System.out.println("description : "+description);
+		
+	}
 	
 }

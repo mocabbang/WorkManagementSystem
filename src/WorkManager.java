@@ -2,13 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import work.SpecialWork;
-import work.Work;
+import work.TypicalWork;
+import work.WorkInput;
+import work.WorkKind;
 
 
 public class WorkManager {
 	
-	ArrayList<Work> works=new ArrayList<Work>();
-	Work work;
+	ArrayList<WorkInput> works=new ArrayList<WorkInput>();
+	WorkInput workInput;
 	Scanner input;
 	
 	WorkManager(Scanner input) {
@@ -25,15 +27,15 @@ public class WorkManager {
 			kind=input.nextInt();
 			
 			if(kind==1) {
-				work=new Work();
-				work.getWorkInput(input);
-				works.add(work);
+				workInput=new TypicalWork();
+				workInput.getWorkInput(input);
+				works.add(workInput);
 				break;
 			}
 			else if(kind==2) {
-				work=new SpecialWork();
-				work.getWorkInput(input);
-				works.add(work);
+				workInput=new SpecialWork();
+				workInput.getWorkInput(input);
+				works.add(workInput);
 				break;
 			}
 			else {
@@ -80,20 +82,21 @@ public class WorkManager {
 	public void editwork() {
 		
 		int i=0;
+		int select=-1;
 		
 		System.out.println("state the name of job to do");
 		String Name=input.next();
 		
 		while(i<works.size()) {
 			
-			if(works.get(i).getName()==Name) {
+			if(works.get(i).getName().equals(Name)) {
 				
-				int select=-1;
-				while(select!=4) {
+				while(select!=5) {
 					System.out.println("1. Edit name");
 					System.out.println("2. Edit date");
 					System.out.println("3. Edit description");
-					System.out.println("4. Exit");
+					System.out.println("4. Edit kind");
+					System.out.println("5. Exit");
 
 					System.out.print("input number between 1~5 : ");
 					select=input.nextInt();
@@ -113,13 +116,46 @@ public class WorkManager {
 						String description=input.next();
 						works.get(i).setDescription(description);
 					}
+					else if(select==4) {
+
+						System.out.println("Kind");
+						
+						int kind=0;
+						
+						while(kind!=1 && kind!=2) {
+							
+							System.out.println("1 for typical, 2 for special");
+							System.out.print("select the num : ");
+							kind=input.nextInt();
+							
+							if(kind==1) {
+								works.get(i).setKind(WorkKind.Typical);
+								break;
+							}
+							else if(kind==2) {
+								works.get(i).setKind(WorkKind.Special);
+								break;
+							}
+							else {
+								System.out.println("wrong access");
+							}
+							
+						}
+						
+					}
+					else if(select==5) {
+						break;
+					}
 					else {
-						continue;
+						System.out.println("wrong access");
 					}
 					
 				}
 				
-				System.out.println(" Successfully done");
+			}
+			
+			if(select==5) {
+				break;
 			}
 			
 		}
@@ -135,14 +171,11 @@ public class WorkManager {
 		// String name=input.next();
 		
 		while(i<works.size()) {
-			System.out.printf("name of work : %s\n", works.get(i).getName());
-			System.out.printf("date of work : %s\n", works.get(i).getDate());
-			System.out.printf("work description \n%s\n", works.get(i).getDescription());
+			works.get(i).printInfo();
 			
 			i++;
 		}
 		
 	}
-	
 	
 }
