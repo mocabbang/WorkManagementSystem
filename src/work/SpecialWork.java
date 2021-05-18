@@ -1,12 +1,11 @@
 package work;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import exception.DateRangeException;
+
 public class SpecialWork extends Work implements WorkInput {
-	
-	protected int importance;
-	
-	
 	
 	public SpecialWork() {
 	}
@@ -20,17 +19,6 @@ public class SpecialWork extends Work implements WorkInput {
 	}
 	
 	
-	
-	public int getImportance() {
-		return importance;
-	}
-
-	public void setImportance(int importance) {
-		this.importance = importance;
-	}
-	
-	
-	
 	public void getWorkInput(Scanner input) {
 		
 		this.kind=WorkKind.Special;
@@ -39,9 +27,23 @@ public class SpecialWork extends Work implements WorkInput {
 		String name=input.next();
 		this.setName(name);
 		
-		System.out.print("date of work : ");
-		String date=input.next();
-		this.setDate(date);
+		try {
+		System.out.println("date of work");
+			int num;
+			System.out.print("year : ");
+			num=input.nextInt();
+			date="year : "+Integer.toString(num);
+			date=getmonth(input, num);
+			date=getday(input, num);
+			date=gethour(input, num);
+			date=getminute(input, num);
+			
+			this.setDate(date);
+		}
+		catch(DateRangeException e) {
+			System.out.println("DateRangeException");
+		}
+		
 		
 		System.out.println("Description");
 		String description=input.next();
@@ -67,6 +69,62 @@ public class SpecialWork extends Work implements WorkInput {
 			
 		}
 		
+	}
+	
+	public String getmonth(Scanner input, int num) throws DateRangeException{
+		try {
+			System.out.print("month : ");
+			num=input.nextInt();
+			if(12<num||num<1) {
+				throw new DateRangeException();
+			}
+		}
+		catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
+		}
+		return date=date+"month : "+Integer.toString(num);
+	}
+	
+	public String getday(Scanner input, int num) throws DateRangeException{
+		try {
+			System.out.print("day : ");
+			num=input.nextInt();
+			if(31<num||num<1) {
+				throw new DateRangeException();
+			}
+		}
+		catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
+		}
+		return date=date+"day : "+Integer.toString(num);
+	}
+	
+	public String gethour(Scanner input, int num) throws DateRangeException{
+		try {
+			System.out.print("hour : ");
+			num=input.nextInt();
+			if(23<num||num<0) {
+				throw new DateRangeException();
+			}
+		}
+		catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
+		}
+		return date=date+"hour : "+Integer.toString(num);
+	}
+	
+	public String getminute(Scanner input, int num) throws DateRangeException{
+		try {
+			System.out.print("minute : ");
+			num=input.nextInt();
+			if(60<num||num<0) {
+				throw new DateRangeException();
+			}
+		}
+		catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
+		}
+		return date=date+"minute : "+Integer.toString(num);
 	}
 	
 	public void printInfo() {

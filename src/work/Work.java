@@ -2,6 +2,7 @@ package work;
 
 public abstract class Work {
 	
+	protected int importance;
 	protected WorkKind kind=WorkKind.Typical;
 	protected String description;
 	protected String date="";
@@ -25,6 +26,14 @@ public abstract class Work {
 	}
 	
 	
+	
+	public int getImportance() {
+		return importance;
+	}
+
+	public void setImportance(int importance) {
+		this.importance = importance;
+	}
 	
 	public WorkKind getKind() {
 		return kind;
