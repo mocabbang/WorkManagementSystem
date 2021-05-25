@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,8 +9,12 @@ import work.WorkInput;
 import work.WorkKind;
 
 
-public class WorkManager {
+public class WorkManager implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8602639807625147235L;
 	ArrayList<WorkInput> works=new ArrayList<WorkInput>();
 	WorkInput workInput;
 	Scanner input;
