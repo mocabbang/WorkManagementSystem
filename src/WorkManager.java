@@ -17,7 +17,7 @@ public class WorkManager implements Serializable {
 	private static final long serialVersionUID = -8602639807625147235L;
 	ArrayList<WorkInput> works=new ArrayList<WorkInput>();
 	WorkInput workInput;
-	Scanner input;
+	transient Scanner input;
 	
 	WorkManager(Scanner input) {
 		this.input=input;

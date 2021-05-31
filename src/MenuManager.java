@@ -1,15 +1,27 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import log.EventLogger;
+
 public class MenuManager {
-	
+	static EventLogger logger=new EventLogger("log.txt");
 	
 	public static void main(String[] args) {
 		
 		Scanner input=new Scanner(System.in);
-		WorkManager workmanager=new WorkManager(input);
+		WorkManager workmanager=getObject("workmanager.ser");
+		if(workmanager==null) {
+			workmanager=new	WorkManager(input);
+		}
 		
 	    selectMenu(input, workmanager);
+	    putObject(workmanager, "workmanager.ser");
 		System.out.print("\n close program \n");
 	}
 	
@@ -35,15 +47,19 @@ public class MenuManager {
 				switch (select) {
 				case 1:
 					workmanager.addwork();
+					logger.log("add a work");
 					break;
 				case 2:
 					workmanager.deletework();
+					logger.log("delete a work");
 					break;
 				case 3:
 					workmanager.editwork();
+					logger.log("edit a work");
 					break;
 				case 4:
 					workmanager.viewworks();
+					logger.log("view a work");
 					break;
 				default:
 					continue;
@@ -56,5 +72,43 @@ public class MenuManager {
 		
 		
 	}
+	
+	
+	public static WorkManager getObject(String filename) {
+		WorkManager workmanager=null;
+		try {
+			FileInputStream file=new FileInputStream(filename);
+			ObjectInputStream in=new ObjectInputStream(file);
+			
+			workmanager=(WorkManager)in.readObject();
+			
+			in.close();
+			file.close();
+		} catch (FileNotFoundException e) {
+			return workmanager;
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return workmanager;
+	}
+	
+	public static void putObject(WorkManager workmanager, String filename) {
+		try {
+			FileOutputStream file=new FileOutputStream(filename);
+			ObjectOutputStream out=new ObjectOutputStream(file);
+			
+			out.writeObject(workmanager);
+			
+			out.close();
+			file.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 }

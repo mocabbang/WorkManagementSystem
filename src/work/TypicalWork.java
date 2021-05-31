@@ -28,10 +28,10 @@ public class TypicalWork extends Work implements WorkInput {
 			System.out.print("year : ");
 			num=input.nextInt();
 			date="year : "+Integer.toString(num);
-			date=getmonth(input, num);
-			date=getday(input, num);
-			date=gethour(input, num);
-			date=getminute(input, num);
+			date=setmonth(input, num);
+			date=setday(input, num);
+			date=sethour(input, num);
+			date=setminute(input, num);
 			
 			this.setDate(date);
 		}
@@ -45,7 +45,7 @@ public class TypicalWork extends Work implements WorkInput {
 		
 	}
 	
-	public String getmonth(Scanner input, int num) throws DateRangeException{
+	public String setmonth(Scanner input, int num) throws DateRangeException{
 		try {
 			System.out.print("month : ");
 			num=input.nextInt();
@@ -59,7 +59,7 @@ public class TypicalWork extends Work implements WorkInput {
 		return date=date+"month : "+Integer.toString(num);
 	}
 	
-	public String getday(Scanner input, int num) throws DateRangeException{
+	public String setday(Scanner input, int num) throws DateRangeException{
 		try {
 			System.out.print("day : ");
 			num=input.nextInt();
@@ -73,7 +73,7 @@ public class TypicalWork extends Work implements WorkInput {
 		return date=date+"day : "+Integer.toString(num);
 	}
 	
-	public String gethour(Scanner input, int num) throws DateRangeException{
+	public String sethour(Scanner input, int num) throws DateRangeException{
 		try {
 			System.out.print("hour : ");
 			num=input.nextInt();
@@ -87,7 +87,7 @@ public class TypicalWork extends Work implements WorkInput {
 		return date=date+"hour : "+Integer.toString(num);
 	}
 	
-	public String getminute(Scanner input, int num) throws DateRangeException{
+	public String setminute(Scanner input, int num) throws DateRangeException{
 		try {
 			System.out.print("minute : ");
 			num=input.nextInt();

@@ -1,7 +1,13 @@
 package work;
 
-public abstract class Work {
+import java.io.Serializable;
+
+public abstract class Work implements WorkInput, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8754231770801184607L;
 	protected int importance;
 	protected WorkKind kind=WorkKind.Typical;
 	protected String description;
